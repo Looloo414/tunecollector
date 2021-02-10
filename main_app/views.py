@@ -29,6 +29,10 @@ def add_group(request, tune_id):
         new_group.save()
     return redirect('detail', tune_id=tune_id)
 
+def assoc_instrument(request, tune_id, instrument_id):
+  Tune.objects.get(id=tune_id).instruments.add(instrument_id)
+  return redirect('detail', tune_id=tune_id)
+
 
 class TuneCreate(CreateView):
   model = Tune

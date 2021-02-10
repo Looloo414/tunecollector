@@ -68,9 +68,9 @@
             </span>
           </div>
           <div class="card-action">
-            <form action="" method="post">
-              {% csrf_token %}
-              <button type="submit" class="btn">Add</button>
+            <form action="{% url 'assoc_instrument' tune.id instrument.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn">Add</button>
             </form>
           </div>
         </div>
