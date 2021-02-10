@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Tune
 
 
@@ -23,18 +23,14 @@ class TuneCreate(CreateView):
   fields = '__all__'
   success_url = '/tunes/'
 
+class TuneUpdate(UpdateView):
+  model = Tune
+  fields = ['song', 'genre', 'length']
+
+class TuneDelete(DeleteView):
+  model = Tune
+  success_url = '/tunes/'
 
 
 
-# class Tune:  # Note that parens are optional if not inheriting from another class
-#   def __init__(self, artist, song, genre, length):
-#     self.artist = artist
-#     self.song = song
-#     self.genre = genre
-#     self.length = length
 
-# tunes = [
-#   Tune('Avett Brothers', 'Morning Song', 'folk/rock', 3),
-#   Tune('Canyon City', 'When I Fell', 'melody', 4),
-#   Tune('One Direction', 'History', 'pop', 4)
-# ]

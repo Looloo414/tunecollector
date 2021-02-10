@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1>Tune Details</h1>
 
@@ -9,6 +8,10 @@
     <p>Song: {{ tune.song }}</p>
     <p>Genre: {{ tune.genre }}</p>
     <p>Length: {{ tune.length }}</p>
+  </div>
+  <div class="card-action">
+    <a href="{% url 'tunes_update' tune.id %}">Edit</a>
+    <a href="{% url 'tunes_delete' tune.id %}">Delete</a>
   </div>
 </div>
 
