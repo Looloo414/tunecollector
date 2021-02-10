@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Tune
+from .forms import GroupForm
 
 
 # Define the home view
@@ -16,7 +17,8 @@ def tunes_index(request):
 
 def tunes_detail(request, tune_id):
   tune = Tune.objects.get(id=tune_id)
-  return render(request, 'tunes/detail.html', { 'tune': tune })
+  group_form = GroupForm()
+  return render(request, 'tunes/detail.html', { 'tune': tune, 'group_form': group_form })
 
 class TuneCreate(CreateView):
   model = Tune
