@@ -16,4 +16,5 @@ urlpatterns = [
     path('instruments/<int:pk>/update/', views.InstrumentUpdate.as_view(), name='instruments_update'),
     path('instruments/<int:pk>/delete/', views.InstrumentDelete.as_view(), name='instruments_delete'),
     path('tunes/<int:tune_id>/assoc_instrument/<int:instrument_id>/', views.assoc_instrument, name='assoc_instrument'),
+    path('tunes/<int:tune_id>/unassoc_instrument/<int:instrument_id>/', views.unassoc_instrument, name='unassoc_instrument'),
 ]

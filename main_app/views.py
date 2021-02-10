@@ -33,6 +33,9 @@ def assoc_instrument(request, tune_id, instrument_id):
   Tune.objects.get(id=tune_id).instruments.add(instrument_id)
   return redirect('detail', tune_id=tune_id)
 
+def unassoc_instrument(request, tune_id, instrument_id):
+  Tune.objects.get(id=tune_id).instruments.remove(instrument_id)
+  return redirect('detail', tune_id=tune_id)
 
 class TuneCreate(CreateView):
   model = Tune
