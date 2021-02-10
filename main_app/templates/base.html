@@ -18,8 +18,9 @@
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;TuneCollector</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/tunes">View All My Tunes</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'tunes_create' %}">Add a Tune</a></li>
+          <li><a href="{% url 'index' %}">View All My Tunes</a></li>
         </ul>
       </div>
     </nav>

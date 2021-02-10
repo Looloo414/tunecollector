@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import CreateView
 from .models import Tune
 
 
@@ -16,6 +17,11 @@ def tunes_index(request):
 def tunes_detail(request, tune_id):
   tune = Tune.objects.get(id=tune_id)
   return render(request, 'tunes/detail.html', { 'tune': tune })
+
+class TuneCreate(CreateView):
+  model = Tune
+  fields = '__all__'
+  success_url = '/tunes/'
 
 
 
