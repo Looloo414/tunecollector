@@ -2,7 +2,13 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
-
+PLAYLIST = (
+    ('C', 'Country'),
+    ('R', 'Rock'),
+    ('P', 'Pop'),
+    ('H', 'HipHop'),
+    ('M', 'Melody'),
+)
 
 class Tune(models.Model):
     artist = models.CharField(max_length=100)
@@ -15,6 +21,19 @@ class Tune(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'tune_id': self.id})
+
+class Group(models.Model):
+    name = models.CharField(max_length=30)
+    playlist = models.CharField(
+        max_length=1,
+        choices=PLAYLIST,
+        default=PLAYLIST[0][0]
+    )
+    tune = models.ForeignKey(Tune, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.get_playlist_display()} on {self.name}"
+
 
 class Instrument(models.Model):
     name = models.CharField(max_length=50)
