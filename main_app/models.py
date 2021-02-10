@@ -10,11 +10,22 @@ PLAYLIST = (
     ('M', 'Melody'),
 )
 
+class Instrument(models.Model):
+    name = models.CharField(max_length=50)
+    kind = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('instruments_detail', kwargs={'pk': self.id})
+
 class Tune(models.Model):
     artist = models.CharField(max_length=100)
     song = models.CharField(max_length=100)
     genre = models.CharField(max_length=100)
     length = models.IntegerField()
+    instruments = models.ManyToManyField(Instrument)
 
     def __str__(self):
         return self.artist
@@ -35,9 +46,4 @@ class Group(models.Model):
         return f"{self.get_playlist_display()} on {self.name}"
 
 
-class Instrument(models.Model):
-    name = models.CharField(max_length=50)
-    kind = models.CharField(max_length=20)
-    
-    def __str__(self):
-        return self.name
+
