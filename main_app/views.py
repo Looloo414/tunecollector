@@ -13,6 +13,10 @@ def tunes_index(request):
     tunes = Tune.objects.all()
     return render(request, 'tunes/index.html', { 'tunes': tunes })
 
+def tunes_detail(request, tune_id):
+  tune = Tune.objects.get(id=tune_id)
+  return render(request, 'tunes/detail.html', { 'tune': tune })
+
 
 
 
