@@ -42,6 +42,10 @@ class TuneCreate(CreateView):
   fields = '__all__'
   success_url = '/tunes/'
 
+  def form_valid(self, form):
+    form.instance.user = self.request.user  
+    return super().form_valid(form)
+
 class TuneUpdate(UpdateView):
   model = Tune
   fields = ['song', 'genre', 'length']
